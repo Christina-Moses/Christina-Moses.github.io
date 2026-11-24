@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-cream: #faf7f2;
+  --color-porcelain: #fffdf9;
+  --color-blush: #f4dce0;
+  --color-blush-soft: #f9edf0;
+  --color-sage: #dce7dc;
+  --color-sage-deep: #4e6650;
+  --color-moss: #1e2420;
+  --color-brass: #9c722e;
+  --color-brass-light: #c8a25a;
+  --color-brass-deep: #78551d;
+  --color-espresso: #1f1b18;
+  --color-umber: #5e554d;
+  --color-hairline: #e5ddd1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-cream);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: var(--color-cream);
+    color: var(--color-espresso);
+  }
+
+  ::selection {
+    background-color: #f4dce0;
+    color: #1f1b18;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes vineSway {
+  0%,
+  100% {
+    transform: rotate(-1.6deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(1.8deg) translateY(2px);
+  }
+}
+
+@keyframes petalFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(3deg);
+  }
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-vine-sway {
+  transform-origin: top center;
+  animation: vineSway 6s ease-in-out infinite;
+}
+
+.animate-petal-float {
+  animation: petalFloat 5s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marqueeScroll 36s linear infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-vine-sway,
+  .animate-petal-float,
+  .animate-marquee {
+    animation: none !important;
+  }
+}
